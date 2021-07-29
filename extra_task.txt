@@ -1,0 +1,225 @@
+# this is a \t separated effector to annotation table
+Mca22940	dihydrouridine synthase domain containing protein
+Mca23697	fmrfamide-related neuropeptides
+Mca05071	PREDICTED: prisilkin-39-like
+Mca05072	cuticle isoform x1
+Mca23834	endocuticle structural glycoprotein bd-1-like
+Mca23918	thaumatin-like protein
+Mca24130	repetitive proline-rich cell wall protein 2-like
+Mca24190	PREDICTED: uncharacterized protein LOC107164962
+Mca00781	PREDICTED: uncharacterized protein LOC100573104
+Mca00788	maltase isoform c
+Mca24498	glucose dehydrogenase
+Mca00802	one cut domain family member 3-like
+Mca05338	cuticular protein rr-1 motif 48
+Mca05372	ejaculatory bulb-specific protein 3
+Mca05377	---NA---
+Mca00818	pupal cuticle protein 27-like
+Mca24956	serine protease 44-like
+Mca25013	cell wall protein awa1-like
+Mca00834	growth differentiation factor 8
+Mca00119	glucose dehydrogenase
+Mca25154	cuticle protein 7-like
+Mca05447	cardioactive peptide
+Mca00838	low affinity immunoglobulin epsilon fc receptor-like
+Mca25466	protein takeout
+Mca25670	low quality protein: vacuolar protein sorting-associated protein 62-like
+Mca25932	odorant-binding protein partial
+Mca05677	mam and ldl-receptor class a domain-containing protein 1-like
+Mca05783	venom protease-like
+Mca05785	venom protease-like
+Mca27192	endocuticle structural glycoprotein bd-1-like
+Mca27237	cuticle protein 7-like
+Mca06064	trehalase-like
+Mca27619	cuticular protein 72 precursor
+Mca06105	arylsulfatase b
+Mca06115	adhesive plaque matrix
+Mca06149	adhesive plaque matrix isoform x1
+Mca27991	ejaculatory bulb-specific protein 3
+Mca06277	tetra-peptide repeat homeobox protein 1-like
+Mca06278	tetra-peptide repeat homeobox protein 1-like
+Mca28321	valacyclovir hydrolase-like
+Mca06562	cuticle protein
+Mca06563	cuticle protein 7-like
+Mca06588	protein yellow
+Mca06687	myosuppressin
+Mca06692	tetra-peptide repeat homeobox protein 1-like
+Mca06812	PREDICTED: uncharacterized protein LOC103310813
+Mca06815	PREDICTED: uncharacterized protein LOC100576074
+Mca06816	PREDICTED: uncharacterized protein LOC103310813
+Mca06839	PREDICTED: uncharacterized protein LOC107168144
+Mca06864	PREDICTED: uncharacterized protein LOC100164831 isoform X2
+Mca06902	venom protease-like
+Mca06961	PREDICTED: putative uncharacterized protein DDB_G0282133
+Mca06986	agap012355-pa-like protein
+Mca06987	pollen-specific leucine-rich repeat extensin-like protein partial
+Mca06994	cuticle protein 21
+Mca07065	pdgf- and vegf-related factor 1-like precursor
+Mca07169	glycoprotein hormone alpha-2
+Mca07174	beta-galactosidase-like
+Mca07207	serine arginine-rich splicing factor 8-like
+Mca07285	non-catalytic module family expn protein
+Mca07500	endocuticle structural glycoprotein abd-4-like
+Mca07514	rna-binding protein 14-like
+Mca07516	hybrid sensor histidine kinase response regulator
+Mca07765	allatostatin neuropeptide precursor
+Mca07966	os-d-like protein
+Mca07973	transcription factor 21
+Mca08194	lipase 3-like
+Mca01376	serine arginine-rich splicing factor 8-like
+Mca08493	---NA---
+Mca08518	thaumatin-like protein
+Mca08560	udp-glucuronosyltransferase 2c1-like
+Mca08609	dna-directed rna polymerase ii subunit rpb1-like
+Mca08641	collagen alpha-1 chain-like
+Mca08684	peptidyl-prolyl cis-trans isomerase b-like
+Mca01472	PREDICTED: uncharacterized protein LOC100573339
+Mca08772	aminopeptidase n-like
+Mca08790	protein takeout
+Mca08810	collagen alpha-2 chain
+Mca09072	PREDICTED: uncharacterized protein LOC107163177
+Mca09115	protein takeout-like
+Mca09213	PREDICTED: uncharacterized protein LOC107164781
+Mca09245	eclosion hormone
+Mca09259	cuticle precursor
+Mca09395	cilia- and flagella-associated protein 57 isoform x1
+Mca09475	zinc metalloproteinase nas-13-like
+Mca01661	neither inactivation nor afterpotential protein c isoform x1
+Mca09662	chorion peroxidase-like
+Mca09734	serine proteinase stubble
+Mca09743	chemosensory protein
+Mca09787	PREDICTED: prisilkin-39-like
+Mca09872	septation ring formation family protein
+Mca09936	actin-like protein 6a
+Mca01756	protein yellow
+Mca10028	glucose dehydrogenase
+Mca01815	zinc finger protein 512b-like
+Mca10507	---NA---
+Mca01881	eukaryotic peptide chain release factor gtp-binding subunit-like
+Mca01882	sporozoite surface protein 2-like
+Mca01883	---NA---
+Mca10566	cyclin-dependent kinase inhibitor 1c-like
+Mca01905	---NA---
+Mca10686	---NA---
+Mca10687	collagen alpha-1 chain-like
+Mca10724	nose resistant to fluoxetine protein 6-like
+Mca01955	cyclin-dependent kinase 8-like
+Mca10833	angiotensin-converting enzyme
+Mca11052	retrovirus-related pol polyprotein from transposon partial
+Mca02006	class e vacuolar protein-sorting machinery protein hse1
+Mca11388	neurofilament heavy polypeptide-like
+Mca11427	von willebrand factor type egf and pentraxin domain-containing protein 1
+Mca11825	glucose dehydrogenase
+Mca11838	PREDICTED: uncharacterized protein LOC103310518
+Mca11855	cytokine receptor
+Mca02134	cuticle protein 7-like
+Mca02135	cuticle protein 7-like
+Mca02136	cuticle protein 7-like
+Mca02137	cuticle protein 7-like
+Mca02139	cuticle protein 7-like
+Mca02140	cuticle protein 7-like
+Mca02141	cuticle protein 7-like
+Mca11900	matrix metalloproteinase-14 isoform x2
+Mca11975	bifunctional endo- -beta-xylanase -like
+Mca12153	prothoracicostatic peptide
+Mca12177	probable chitinase 3
+Mca12233	thaumatin-like protein
+Mca12289	glucose dehydrogenase
+Mca12602	collagen alpha-1 chain-like
+Mca12634	endocuticle structural glycoprotein bd-2-like
+Mca12809	flocculation protein flo11-like
+Mca12891	adhesive plaque matrix
+Mca13009	glucose dehydrogenase
+Mca02375	cg31997- partial
+Mca13173	neuroendocrine protein 7b2
+Mca13198	fungistatic metabolite
+Mca13276	repetitive proline-rich cell wall protein 2-like
+Mca13331	cuticle precursor
+Mca13558	pro-resilin-like
+Mca02473	tachykinins isoform x1
+Mca02481	dna ligase 1-like
+Mca13758	probable cytochrome p450 6a13
+Mca00382	prohormone-4
+Mca02531	PREDICTED: uncharacterized protein LOC107165343 isoform X1
+Mca14061	histidine-rich glyco
+Mca14161	carbonic anhydrase 2-like
+Mca02655	---NA---
+Mca02656	repetitive proline-rich cell wall protein 2-like
+Mca02658	repetitive proline-rich cell wall protein 2-like
+Mca14349	protein takeout-like
+Mca14350	protein takeout-like
+Mca14392	cuticle protein 7-like
+Mca14393	cuticle protein 7-like
+Mca14553	glycine-rich cell wall structural protein 2- partial
+Mca14606	protein yellow-like
+Mca14682	ACYPI001887
+Mca14686	probable cytochrome p450 6a14
+Mca14782	cuticle protein 7-like
+Mca02809	beat- isoform a
+Mca15064	glycine-rich cell wall structural isoform x1
+Mca15421	cuticle protein
+Mca02894	larval cuticle protein a2b-like
+Mca02896	cuticle protein 7-like
+Mca02950	protein yellow
+Mca15740	PREDICTED: gelsolin-like
+Mca15871	PREDICTED: uncharacterized protein LOC103311148
+Mca03039	PREDICTED: uncharacterized protein LOC107165482
+Mca16374	lipase 3-like
+Mca16466	chitooligosaccharidolytic beta-n-acetylglucosaminidase
+Mca16553	larval cuticle protein lcp-17-like
+Mca03138	mediator of rna polymerase ii transcription subunit 15-like
+Mca00489	membrane-bound alkaline phosphatase-like
+Mca03217	---NA---
+Mca16980	PREDICTED: uncharacterized protein LOC100164207 isoform X1
+Mca03243	tubulointerstitial nephritis antigen-like
+Mca17153	caldesmon isoform x1
+Mca17157	adenylate kinase 9-like
+Mca17244	PREDICTED: uncharacterized protein LOC100163191
+Mca17352	cartilage oligomeric matrix protein
+Mca17468	endoglucanase 15-like
+Mca00514	prickle-like protein partial
+Mca03374	mediator of rna polymerase ii transcription subunit 26
+Mca03375	cuticle protein 19-like
+Mca03376	cuticle protein 7-like
+Mca17864	PREDICTED: uncharacterized protein LOC100574363
+Mca03428	glucose dehydrogenase
+Mca03453	trypsin-1-like
+Mca17986	clipa6 protein
+Mca03467	adhesive plaque matrix protein isoform x2
+Mca03516	cuticle protein 7-like
+Mca03517	dna-directed rna polymerase ii subunit rpb1-like
+Mca03518	cuticle protein 7-like
+Mca03519	cuticle protein 7-like
+Mca03520	cuticle protein 7-like
+Mca03521	cuticle protein 7-like
+Mca03522	cuticle protein 7-like
+Mca03523	cuticle protein 7-like
+Mca18572	maverick capsid-like
+Mca18785	peroxidase-like isoform x2
+Mca03652	defense protein hdd11
+Mca03661	early nodulin-75
+Mca19101	uncharacterized protein LOC100165421 precursor
+Mca19159	neuropeptide f
+Mca19262	circadian clock-controlled
+Mca03804	cuticular protein analogous to peritrophins 3-d1 precursor
+Mca19546	venom serine protease-like
+Mca00079	---NA---
+Mca03900	cellular retinaldehyde binding protein
+Mca04010	protein takeout-like
+Mca20140	---NA---
+Mca04055	cuticle protein 19-like
+Mca00616	sheath partial
+Mca04067	carotenoid isomerooxygenase isoform x1
+Mca00620	ly6 plaur domain-containing protein 6b-like
+Mca20639	cuticle protein 7-like
+Mca04188	endoplasmic reticulum aminopeptidase 2-like
+Mca20840	short-chain dehydrogenase reductase family 16c member 6-like isoform x2
+Mca04242	serine protease 44-like
+Mca21139	glucose dehydrogenase
+Mca21192	adhesin-like protein
+Mca21224	carboxypeptidase e-like
+Mca22031	endoglucanase 15-like
+Mca04628	nose resistant to fluoxetine protein 6-like
+Mca22270	protein takeout
+Mca22327	atp-dependent dna helicase pif6-like
+Mca22401	protein takeout

@@ -1,0 +1,6 @@
+Cherry	cherry1
+Cherry	cherry2
+Cherry	cherry3
+Gallium	gallium1
+Gallium	gallium2
+Gallium	gallium3

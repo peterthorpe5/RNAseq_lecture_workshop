@@ -1,0 +1,62 @@
+##############################
+# RNAseq workshop
+ 
+Create one document with your answers and upload it on MMS. Deadline is the 03rd Nov 2020 17:00 BST
+
+
+ 
+NAME: 
+ 
+1) What statistical test should be applied if the experimental design is only condition A vs condition B (with replicas)?
+
+2) What statistical test should be applied if there are 2 or more factors in the experimental design?
+
+3) In the differential expression (DE) gene analysis examples we analysed, 
+these were subsets of the same data set. LOG2 fold change (can be thought of a 4 times) is a "standard"
+threshold for classifying if a gene is DE or not (also with a false discovery threshold cut-off, for example P < 0.05, see the table). 
+How many genes were DE at a cut off of LOG2 fold change in the 2 reps and 3 reps data sets?
+Note, this can be +LOG fold change and -LOG fold change ...
+
+4) Your answer to question 3, let’s think some more about this.... Comparing the number of genes "identified" from the 2 reps and 3 reps results: 
+Why is this number different? Expand this answer to say why this "result set: X reps " had the least? Does this make you think about 
+experimental design more?
+
+5) How many genes from the two and three replicas DE result-sets were common? How many were not common? 
+Does this make you more cautious about interpreting results??
+
+6) From the DE exon analysis, how many genes were identified which had differentially expressed exons in the experimental design?
+
+7) What was the greatest number of DE exons identified within a single gene? Choose ANY one of the DE exon graphical output and 
+explain the result
+
+8) To answer the following, you will have to convert the DE exon gene names. See below. The gene name set can be given to you if you
+ do not wish to code this. Of the genes identified in the DE exons set, how many were identified in the DE genes 2 and/ or 3 reps set?
+ 
+9) Expand on 8) and discuss the "amount" of overlap ...its implications or why it is interesting. 
+
+
+10) Write a short half a page feedback on the workshop and what you have learnt.
+
+
+###############################################################################################
+Extra task 1): For those of you who wanted a coding challenge (THIS IS NOT ASSESSED OR MARKED - but help can
+be given if you want it. Submit your code at the end of the file):
+
+The DE exon results had the original names changed, however, they were changed in a logical manner. 
+For example, geneID: 22307 can through as having significantly changed DE exons in the analysis. 
+Its original name was Mca22307. Another example is geneID: 756, original name Mca00756.
+
+Thus all the original names start with Mca and are 5 numerical character. One more example to get that point across
+geneID 1, would have originally been called Mca00001.
+
+Can you write a script to convert all the gene IDs that came through the DE exon analysis to the original names?
+
+Extra task 2): Write a script that compare this newly named DE exon list, to that of the DE gene lists for 2 and 3 reps?
+How many genes are common between the DE exon set and DE gene set (2 and 3 reps). 
+
+Extra task 3): Effectors are of interest in this field of research. In the file extra_task.txt there is a list of previously identified 
+effectors and their annotation. Of the DE gene and DE exon list, and the overlap of these can you see if effectors were identified 
+in these DE lists, and return their annotation?
+
+EXTRA EXTRA bonus. Repeat all the above by comparing the GLM results vs the exact test. 
+
