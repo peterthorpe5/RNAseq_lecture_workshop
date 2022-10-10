@@ -1,0 +1,433 @@
+---
+title: "RNAseq example 2 reps"
+author: "Peter Thorpe"
+date: "13/08/2021"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+```{r include=FALSE}
+
+knitr::opts_chunk$set(comment = NA)
+error = TRUE
+
+```
+
+#0.1 The is a R markdown document 
+
+These are cool as you can make a nice .pdf when you are finished. 
+The run the code, highlight the line of interest and press enter. 
+ 
+
+#load the library needed 
+
+
+```{r}
+
+library(edgeR)
+
+# if not installed
+# install.packages("BiocManager")
+# BiocManager::install("edgeR")
+
+```
+
+
+#0.2 load the data
+
+counts were already generated using salmon and counts.matrix generated using trinity. 
+
+```{r}
+setwd("C:/Users/pjt6/Documents/RNAseq_lecture_workshop/DE_gene/two_bio_reps")
+
+
+# check it
+getwd()
+
+```
+
+The counts data in contained in the counts.matrix, each gene has a digital count per
+condition/ rep
+
+```{r}
+# see what is in the directory 
+dir()
+
+
+# load in the data
+data <- read.delim("TableOfCounts.txt", header=T, row.names=1)
+
+# group the replicas
+group <- factor(c(1,1,2,2))
+
+
+```
+
+
+have a quick look at the data:
+
+```{r}
+head(data)
+
+```
+
+```{r}
+
+# store the data in a list-based object.
+rnaseqMatrix <- DGEList(counts=data, group=group)
+
+```
+
+
+
+```{r}
+
+# have a little look at the data 
+head(rnaseqMatrix)
+
+```
+
+
+
+filter very low expression genes as these do not contribute and negatively afffect the stats
+
+
+```{r}
+
+keep <- filterByExpr(rnaseqMatrix)
+
+rnaseqMatrix <- rnaseqMatrix[keep,,keep.lib.sizes=FALSE]
+
+table(keep)
+
+
+```
+
+
+to account for sequencing depth, calcNormFactors finds a set of scaling facotrs for lib sizes.
+this minimised the log fold change between samples for most genes
+Note this is not FRPM or TPM normalisation, raw values need to be given to EdgeR, as these are
+needed to estimate the mean-variance relationship between the samples
+
+```{r}
+
+rnaseqMatrix <- calcNormFactors(rnaseqMatrix)
+
+```
+
+
+write a table of the lib size and normalisation factors. Look at how these are different. 
+
+```{r}
+
+rnaseqMatrix$samples$eff.lib.size = rnaseqMatrix$samples$lib.size * rnaseqMatrix$samples$norm.factors
+write.table(rnaseqMatrix$samples, file="example.matrix.TMM_info.txt", quote=F, sep="\t", row.names=F)
+
+```
+
+
+
+
+```{r}
+# have a look
+rnaseqMatrix$samples
+
+```
+
+
+
+```{r}
+# group are your samples
+design <- model.matrix(~group)
+
+```
+
+
+estimate the dispertion
+```{r}
+
+rnaseqMatrix <- estimateDisp(rnaseqMatrix,design)
+
+
+
+
+```
+
+
+run the DE analysis:
+
+
+```{r}
+# To perform quasi-likelihood F-tests: (better for low numbers of reps)
+fit <- glmQLFit(rnaseqMatrix, design)
+
+plotQLDisp(fit)
+
+
+# value 0.01 is good for DE analysis. 
+rnaseqMatrix$common.dispersion
+
+
+
+```
+
+
+
+
+```{r}
+
+# have a little look
+fit
+
+
+```
+
+
+
+```{r}
+
+qlf <- glmQLFTest(fit,coef=2)
+
+topTags(qlf)
+
+
+tTags = topTags(qlf,n=NULL)
+
+result_table = tTags$table
+ 
+```
+
+
+write the results to files
+
+```{r}
+
+result_table = data.frame(sampleA="cherry", sampleB="gallium", result_table)
+
+result_table <- result_table[order(result_table$logFC),]
+
+write.table(result_table, file='M.cerasi_cherry_vs_gallium.GLM.edgeR.DE_results', sep='	', quote=F, row.names=T)
+
+write.table(rnaseqMatrix, file='M.cerasi_cherry_vs_gallium.GLM.edgeR.count_matrix', sep='	', quote=F, row.names=T)
+
+
+
+```
+
+plots fucntions
+
+```{r}
+
+
+plot_MA = function(logCounts, logFoldChange, FDR, xlab="logCounts", ylab="logFC", title="MA plot", pch=20) {
+
+    plot(logCounts, logFoldChange, col=ifelse(FDR<=0.05, "red", "black"), xlab=xlab, ylab=ylab, main=title, pch=pch);;
+
+}
+
+
+
+plot_Volcano = function(logFoldChange, FDR, xlab="logFC", ylab="-1*log10(FDR)", title="Volcano plot", pch=20) {
+
+   plot(logFoldChange, -1*log10(FDR), col=ifelse(FDR<=0.05, "red", "black"), xlab=xlab, ylab=ylab, main=title, pch=pch);
+
+}
+
+
+plot_MA_and_Volcano = function(logCounts, logFoldChange, FDR, xlab="logCounts", ylab="logFC", title="MA plot") {
+
+    def.par = par(no.readonly = TRUE) # save default, for resetting...
+
+    gridlayout = matrix(c(1:4),nrow=2,ncol=2, byrow=TRUE);
+    layout(gridlayout, widths=c(1,1,1,1), heights=c(1,1,1,1)) 
+
+    #plot_MA(logCounts, logFoldChange, FDR);
+    #plot_Volcano(logFoldChange, FDR);
+
+    # draw again, but use a smaller dot for data points
+    plot_MA(logCounts, logFoldChange, FDR, pch='.');
+    plot_Volcano(logFoldChange, FDR, pch='.');
+    
+
+    par(def.par)   
+        
+    
+}
+
+
+matrix_to_color_assignments = function(matrix_m, col=NULL, by=c("matrix", "row", "col")) {
+
+	if (! is.matrix(matrix_m))
+		stop("Error, matrix_to_color_assignments() requires a matrix as parameter.")
+	num_colors = 0
+    
+    if (is.null(col)) {
+        num_colors = min(nrow(matrix_m), ncol(matrix_m))
+        col = rainbow(num_colors)
+    }
+    else {
+        num_colors = length(col)
+    }
+    
+    by = match.arg(by)
+    
+    if (by == "matrix") {
+
+        min_val = min(matrix_m, na.rm=T)
+	    matrix_m = matrix_m - min_val
+	    max_val = max(matrix_m, na.rm=T)
+	    matrix_m = matrix_m / max_val * num_colors
+        #print(matrix_m)
+   	    matrix_m = apply(matrix_m, 1:2, function(x) ifelse (x<1, as.character(col[1]), as.character(col[x])));
+		
+        matrix_m = matrix(as.character(matrix_m), nrow=dim(matrix_m)[1])
+	}
+	else {
+
+		row_or_col_only_color_selector_func = function(x) { 
+				a = min(x, na.rm=T); 
+				b = max(x, na.rm=T); 
+				c = (x-a)/(b-a) * num_colors;
+                c = round(c);
+				c = ifelse (c<1, 1, c); 
+                #print(paste(c("color selection: (a)", a, " (b)", b, " (c)", paste(c, sep=',')))); 
+                colors = as.character(col[c]);
+                return(colors);
+		}
+	
+		if (by == "row") {
+            matrix_m = apply(matrix_m, 1, row_or_col_only_color_selector_func);
+            print(matrix_m)
+            print("dim matrix_m after apply"); print(dim(matrix_m))
+            matrix_m = t(matrix_m);
+            print("dim matrix_m after transpose: "); print(dim(matrix_m))
+		}
+		else {
+			# by column
+			matrix_m = apply(matrix_m, 2, row_or_col_only_color_selector_func);
+		}
+	}
+    
+	#print(matrix_m)
+	return(matrix_m)
+}
+
+sample_matrix_to_color_assignments = function(sampleAnnotationsMatrix, colors) {
+
+	if (missing(colors))
+		colors = rainbow(nrow(sampleAnnotationsMatrix))
+
+	nsamples = nrow(sampleAnnotationsMatrix);
+
+	if (length(colors) < nrow(sampleAnnotationsMatrix))
+		stop("Error, only ", length(colors), " colors specified, but have ", nsamples, " samples");
+
+	for (i in 1:nrow(sampleAnnotationsMatrix)) {
+		c = colors[i]
+		sampleAnnotationsMatrix[i,] = sapply(sampleAnnotationsMatrix[i,], function(x) ifelse( x, as.character(c), 'white'))
+	}
+
+	return(sampleAnnotationsMatrix);
+
+}
+
+
+colorpanel = function (n, low, mid, high) 
+{
+    if (missing(mid) || missing(high)) {
+    rgb(red, blue, green)
+}
+
+
+
+
+
+```
+
+
+actually produce some plots
+
+```{r}
+
+pdf("Volcano.pdf")
+
+plot_MA_and_Volcano(result_table$logCPM, result_table$logFC, result_table$FDR)
+
+dev.off()
+# load the sample types
+
+samples_data = read.table("samples_described.txt", header=F, check.names=F, fill=T)
+samples_data = samples_data[samples_data[,2] != '',]
+sample_types = as.character(unique(samples_data[,1]))
+rep_names = as.character(samples_data[,2])
+data = data[, colnames(data) %in% samples_data[,2], drop=F ]
+nsamples = length(sample_types)
+sample_colors = rainbow(nsamples)
+names(sample_colors) = sample_types
+sample_type_list = list()
+for (i in 1:nsamples) {
+    samples_want = samples_data[samples_data[,1]==sample_types[i], 2]
+    sample_type_list[[sample_types[i]]] = as.vector(samples_want)
+}
+sample_factoring = colnames(data)
+for (i in 1:nsamples) {
+    sample_type = sample_types[i]
+    replicates_want = sample_type_list[[sample_type]]
+    sample_factoring[ colnames(data) %in% replicates_want ] = sample_type}
+
+# load in the heat map function
+
+
+primary_data = read.table("TableOfCounts.txt", header=T, com='', sep="\t", row.names=1, check.names=F)
+primary_data = as.matrix(primary_data)
+initial_matrix = as.matrix(primary_data)
+
+
+
+```
+
+plot a PCA
+
+```{r}
+
+# to do a PCA
+pdf("minRow10.CPM.log2.principal_components.pdf")
+data = as.matrix(primary_data)
+# Z-scale and center the genes across all the samples for PCA
+prin_comp_data = initial_matrix
+prin_comp_data = log2(prin_comp_data+1)
+prin_comp_data = scale(prin_comp_data)
+prin_comp_data = t(scale(t(prin_comp_data), center=TRUE, scale=F)) # just center trans expr level, retain original effect size.
+pca = prcomp(t(prin_comp_data), center = FALSE, scale. = FALSE)
+pc_pct_variance = (pca$sdev^2)/sum(pca$sdev^2)
+def.par <- par(no.readonly = TRUE) # save default, for resetting...
+gridlayout = matrix(c(1:4),nrow=2,ncol=2, byrow=TRUE);
+layout(gridlayout, widths=c(1,1));
+write.table(pca$rotation, file="minRow10.CPM.log2.PCA.loadings", quote=F, sep="	")
+write.table(pca$x, file=".minRow10.CPM.log2.PCA.scores", quote=F, sep="	")
+for (i in 1:(max(3,2)-1)) {
+     xrange = range(pca$x[,i])
+     yrange = range(pca$x[,i+1])
+     samples_want = rownames(pca$x) %in% sample_type_list[[sample_types[1]]]
+     pc_i_pct_var = sprintf("(%.2f%%)", pc_pct_variance[i]*100)
+     pc_i_1_pct_var = sprintf("(%.2f%%)", pc_pct_variance[i+1]*100)
+     plot(pca$x[samples_want,i], pca$x[samples_want,i+1], xlab=paste('PC',i, pc_i_pct_var), ylab=paste('PC',i+1, pc_i_1_pct_var), xlim=xrange, ylim=yrange, col=sample_colors[1])
+     for (j in 2:nsamples) {
+         samples_want = rownames(pca$x) %in% sample_type_list[[sample_types[j]]]
+         points(pca$x[samples_want,i], pca$x[samples_want,i+1], col=sample_colors[j], pch=j)
+     }
+     plot.new()
+     legend('topleft', as.vector(sample_types), col=sample_colors, pch=1:nsamples, ncol=2)
+ }
+ 
+ par(def.par)
+ pcscore_mat_vals = pca$rotation[,1:3]
+ pcscore_mat = matrix_to_color_assignments(pcscore_mat_vals, col=colorpanel(256,'blue','white','red'), by='row')
+ colnames(pcscore_mat) = paste('PC', 1:ncol(pcscore_mat))
+ dev.off()
+ 
+ 
+ 
+```
+
