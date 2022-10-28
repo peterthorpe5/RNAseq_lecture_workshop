@@ -222,7 +222,7 @@ a trend line capturing the dispersion-mean relationship
 The log normal prior on the dispersion parameter has been proposed by Wu, et al. (2012) 
 and is also implemented in the DSS package."
 
-
+dxd = estimateDispersions( dxd)
 
 ```{r}
 
